@@ -2,7 +2,7 @@
 #include<pthread.h>
 
 void thread_fun1(void);
-void thread_fun2(void);
+//void thread_fun2(void);
 
 int main()
 {
@@ -13,7 +13,7 @@ printf("thread id for t1:%d\n",pthread_self());
   printf("thread id for t2:%d\n",pthread_self());
   
 pthread_create(&t1,NULL,thread_fun1,NULL);
-  pthread_create(&t2,NULL,thread_fun2,NULL);
+  pthread_create(&t2,NULL,thread_fun1,NULL);
 pthread_join(t1,NULL);
   pthread_join(t2,NULL);
 }
@@ -24,8 +24,8 @@ printf("process 1 id:%d\n",getpid());
 printf("thread 1 id:%d\n",pthread_self());
 
 }
-void thread_fun1(void)
+/*void thread_fun1(void)
 {
   printf("process 2 id:%d\n",getpid());
   printf("thread 2 id:%d\n",pthread_self());
-}
+}*/
