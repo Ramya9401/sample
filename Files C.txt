@@ -1,0 +1,587 @@
+Till now we learn C programming that can only store data in Primary/Main memory.The demerits with this type of programs are that, when we close a program all the data related to that program are deleted (dealocated) from main memory. And when we again run that program we need to reenter all data again.
+
+Primary memory is a small memory and in formations stored in a primary memory for a short period of time. Only the information related to an active process is stored in a primary memory. When the process is terminated, operating system de-allocates/deletes the information related to the process and the process itself from main memory, this is because main memory is very small.
+
+ So, for this reason we need to re-enter all the information when a process is loaded into main memory or a program is start execution.
+
+"	Another problem with main memory is that main memory is "volatile". That means anything that are stored in main memory is automatically deleted when power is failed. 
+
+"	This type of problem can be solved, if we can store information or data in a "Non-Volatile" and Large memory. An example of such type of memory is a Hard-Disk. 
+ So, our problem can be solved, if we can store information on a hard disk by creating a C Program.
+
+"	Luckily, the C Programming Language provides such types of facilities to stored data in a Secondary Storage Device. 
+
+"	So, C Programming Language provides two types of concepts to store data in a secondary storage device. These two concepts are,
+1.	Files.
+2.	Database.
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ There are numerous library functions available for I/O .
+These are categorized into three:
+  a)Console I/O Functions
+     Functions to receive input from keyboard and write 
+      output to VDU.
+  b)Disk I/O Functions
+     Functions to perform I/O operations on a floppy disk 
+     or hard disk.
+  c)Port I/O Functions- 
+          Functions to perform I/O operations on various ports.
+
+
+
+
+
+
+k
+ Console oriented applications always use the terminal
+(keyboard and screen) as the target place.This works fine 
+as long as the data is small . However , many real-life 
+problems involve large volumes of data and such situations,
+the console oriented I/O operations pose two major problems.
+
+1. It becomes cumbersome and time consuming to handle 
+large volumes of data through terminals.
+2. The entire data is lost when either the program is 
+terminated or the computer turned off.                 
+      
+   It is therefore necessary to have a more flexible 
+approach where data can be stored on disks and read 
+whenever necessary,without destroying the data. This 
+method employs the concept of FILES  to store data. 
+
+		A File is a place on the disk where a group of 
+related data is stored. 
+
+OR
+A File is a collection of related data stored in a particular area on the disk 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    	Disk I/0
+
+   High Level       Low Level
+
+  Text      Binary
+
+
+Formatted    Unformatted
+
+
+Text ---- .C,.CPP,.TXT,.ASM
+Binary ---- .obj, .exe,.wav, .mp3
+
+All kinds of multimedia Fiels are Binary Section
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Like most other languages,C 
+supports a number of functions that have ability to 
+perform basic file  operations , which include:
+ 1. Naming a file,
+ 2. Opening a file,
+ 3. Reading data from a file ,
+ 4.Writing data to a file, and
+ 5.Closing a file.
+
+Disk I/O Functions 
+
+     There are two distinct ways to perform file operations
+in C .
+       1. Low-Level I/O and uses UNIX system calls .
+       2. High-Level I/O library.
+      High Level I/O functions are more commonly used in C 
+programs, since they are easier to use than Low Level disk
+I/O functions . There is one difference between High Level
+and Low Level disk I/O functions . High Level disk I/O 
+functions do their own buffer management ,where as in Low 
+Level Disk I/O functions, buffer management has to be done
+explicitly by the programmer.
+
+
+
+
+
+
+
+
+
+
+DATA FILES
+
+v	Many applications require the information to be written to or read from an auxiliary memory device. 
+v	Such information is stored on memory device in the form of data file.
+v	Data file allows to store information permanently and access, alter that information whenever necessary
+v	There are two different types of data files 
+v	Stream oriented or standard data files 
+v	System oriented or low level data files 
+
+			Disk I/0
+
+                  High Level       Low Level
+
+             Text          Binary
+
+  Formatted    Unformatted
+
+
+Text ---- .C,.CPP,.TXT,.ASM
+Binary ---- .obj, .exe,.wav, .mp3
+
+All kinds of multimedia Fiels are Binary Section
+
+
+v	Stream oriented data files are sub divided into two categories 
+v	Test files consisting fo consecutive characters 
+v	Thee characters can be inter pretend either by the particular library functions used to transfer the information or by format specifications within the library functions 
+v	These characters can be interpreted as individual data items or components or strings or numbers
+v	Unformatted data files 
+v	It organizes data into blocks containing conditions bytes of information
+v	The blocks represent more complex data structures such as an array and structures 
+v	To process stream oriented data files, a separate set of library functions are used
+
+
+v	System oriented data files are more closely related to the computer operating system
+v	They are much complicated to work upon but more efficient for certain applications 
+v	Separate sets of procedures with accompanying library functions are required
+
+//Opening and closing of a data files
+
+The first step in a stream oriented data files is to establish a buffer area , the buffer  area is the temporary storage which is used while the information is being transferred between the computer memory and data files The buffer area allows information to be read from or written to the data files  
+
+//Establishing buffer area 
+
+FILE *file_pointer ;
+Ex :
+FILE *sp;
+It is a built in the structure which includes the variables which can refer the attributes of the file . It is used to represent the file pointer objects.
+
+
+
+
+
+FILE is a special structure type that establish buffer area
+FILE need to be declared in upper case
+Fp is often referred to as stream pointer or simply a string
+A data file must be opened before it can be created or processed
+This associates the file name with the buffer area
+It specifies how dat file will utilized
+
+
+
+fopen() function 
+
+file_ptr=fopen(filename,"modes_of_file");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fp=fopen(filename,filetype);
+Fopen is used to open a file, filename, of the dat file and the way in which data file will be utilized
+
+
+
+
+
+
+"r"	Searches File . If the file exists loads it into memory and sets up a pointer which points to the first character in it , if file doesn't exists it returns null. Operations possible - Reading from a file.
+
+"w"	Searches File . If the file exists its contents are overwritten .If file doesn't exists new file is created .Returns null if unable to open a file. Operations possible - Writing to a file. 
+
+"a"	Searches File . If the file exists loads it into memory and sets up a pointer to point the first character .If file doesn't exists new file is created .Returns null if unable to open a file. Operations possible - Appending new contents at the end of file.
+
+"r+"	Searches File .If it exists,loads it into memory sets up a pointer which points to the first character in it. If does not exist it returns NULL. Operations possible - reading,writing,modifying existing contents. 
+
+we also have ab+ wb+ etc 
+
+
+
+
+
+
+“r” Open an Existing file for read only
+“w” open a new file for write only
+“a” Open an eisting file for appending
+“r+” opens a file for reading and writing
+“w+” Open a new file  for both reading and writing
+“a+” Open an existing file for both reading and appending
+fopen function returns a pointer to the beginning of the buffer area associated with the file 
+A null is returned, if a file cannot be opened
+A data file must be closed at the end of the program where fclose() is used fclose(fp)
+
+
+Creating a data File : 
+
+A data file must be created before it can be processed
+A steram oriented data file can be created in two ways
+1.Using text editior or word processor
+2.Writing a program that enters information intop the computer and then writes it out to the data file 
+
+
+  File Operations 
+   <stdio.h>
+
+   Functions
+fclose() fgets() fread() fwrite() feof() fopen() fscanf() fremove() fgetc() fprintf() fseek() frename() fgetchar() fputc() ftell()
+
+ Constants Datattypes and Global Variables
+1 EOF 2 SEEK_CUR  3 FILE  4 SEEK_END  5 NULL 6 SEEK_SET
+
+fputc() It redirects a single character to the standard file.
+      fputc(char,file *);
+
+fgetc()
+reads a single character into a target variable from a specified file.
+    <char>=fgetc(file*);
+
+
+
+
+
+
+
+
+
+
+
+ r+ open an existing file for update (reading and writing)
+
+ w+ Create a new file for update (writing and reading)
+
+a+ open for append open for update at the end of file or create if the file does not exist
+
+--> To specify that a given file is being opened or created in textmode ,append "+" to the strig binary mode append "b" to the string (wb+ etc)
+
+
+File Positioning
+A file may be accessed sequentially or randomly. In a sequential access, all the preceding data is accessed before accessing a specific portion of a file. Random access permits direct access to a specific portion of a file.
+
+fseek(),ftell()and rewind()are the functions used in random access of a file.
+
+FSEEK
+
+flag = fseek(file-pointer,offset,from-where);
+
+int flag is the value returned by the function fseek()  O if successful and 1 if unsuccessful....
+
+
+fseek()
+sets the position of the "next input or output operation "in the file to which the file pointer fp
+points to. The new position is at the signed distance offset bytes from the beginning , from the
+current position or from the end of the file depending upon the value of the ptrname
+(0)SEEK_SET--> begining position
+(1)SEEK_CUR--> current position
+(2)SEEK_END--> ending position
+
+
+       fseek(fp,7L,0);
+position the file associated with fp of the eight character of the file (remember the first character is at position 0).
+
+
+
+If the third prameter is 1 the 2nd parameter specifies  an increment or decrement to the current position of the File .
+
+       fseek(fp,3L,1);
+
+skips ahead three characters in the File where as
+
+            fseek(fp,-3L,1);
+      moves back three characters.
+
+
+--> In emp table we need to retrieve the 5th record for this one we use fseek function
+
+struct emp
+{
+int eno;
+char ename[20];
+float sal;
+};//26bytes
+0-25 ----1stRecord
+26-51----2nd
+52-77--3rd
+78-103--4th
+104--128---5th
+129--154--6th
+
+fseek(fp,(id-1)*sizeof(emp),SEEK_SET);
+             id =5th Record
+              
+
+           fp = 1st record
+
+
+If in emp table there are n records , then to retrieve the last record
+
+fseek(fp,-sizeof(EMP),SEEK_END);
+
+         - MOVEBACK
+write a program for to enter two charcacters ,in a file first character is to repalced with the second character
+
+
+while(1)
+{
+ch=fgetc(fp);
+if(feof(fp))
+break;
+if(ch==ch1)
+{
+fseek(fp-1,SEEK_CUR);
+fprintf(fp,"%c",ch2);
+fseek(fp,0,SEEK_CUR);
+}
+}
+
+
+reverse of a file
+
+--> printf("abc\nabc");
+
+      \n=\r\n
+
+o/p   abc
+     abc
+    
+
+abc
+    abc        (actual behaviour of \n)
+
+
+
+Enter Key
+
+             \n  =  \r+\n
+
+This is the only difference betn text mode and binary files
+
+
+---->
+
+   1. Create -->"ab"
+   2. Modify -->"rb+"
+  3. Display --> "rb"
+  4. No of records --> "rb"
+
+struct emp
+{
+int eno;
+char ename[20];
+float sal;
+};
+ emp e;
+  fprintf(fp,"%d%s%d",e.id,e.ename,e.sal); //ok
+
+ we can write this but it is not recommandable
+
+--> In this situation if we want to make any modification then we need to create a temparory file and copy this one and make changes and once again copied into this one.
+
+ fwrite()
+
+It is used to redirect the complete object of a structure into the binary file.
+
+fwrite(<&object>,size,1,file *);
+
+ fwrite(&e,sizeof(e),1,fp);
+    
+  1 indicate no of records
+     &e -- source   fp--- target
+
+--> To acheiving a uniquness of memory allocation then we go for fwrite function
+
+ fread()
+
+It is used to read the data from the binary file into a structure object  with a known size.
+
+fread(<&object>,size,1,file *);
+
+fread(&e,sizeof(e),1,fp);
+
+It is used to read the entire record at a time.
+
+
+#include<stdio.h>
+#include<process.h>
+typedef struct
+{
+int id;
+char name[20];
+int sal;
+}EMP;
+
+FILE *fp;
+int ne;
+EMP e;
+char c;
+
+void main()
+{
+int flag;
+void createemps();
+void modifyemps();
+void showemps();
+int noofemps();
+clrscr();
+while(1)
+{
+printf("\n For Create Emps Enter 1:");
+printf("\n For Modify Emps Enter 2:");
+printf("\n For showemps Emps Enter 3:");
+printf("\n For noof Emps Enter 4:");
+printf("\n For Exit Enter Any....:");
+scanf("%d",&flag);
+switch(flag)
+{
+case 1 : createemps();
+         break;
+case 2 :  modifyemps();
+           break;
+case 3: showemps();
+          break;
+case 4 : printf("No of Emps : %d ",noofemps());
+break;
+default : exit(1);
+}
+}
+}
+
+           
+
+
+Command Line Arguments  (Using argc and argv
+parameters)
+The
+main()
+function takes two arguments called
+argv
+and
+argc
+.
+The general format is
+main(argc,argv)
+int argc;
+char *argv[ ];
+The integer
+argc
+(argument count)
+contains the number of arguments in the command line,
+including the command name.
+argv
+(argument vector)
+is an array which contains addresses of each arguments.
+When there is a need to pass information into a program while you are running it, then the
+information can be passed into the main() function through the built in arguments argc and
+argv.
+Consider an example that will print your name on the screen if  you type it directly
+after the program name.
+/* Program that explains argc and argv */
+# include <stdio.h>
+main(argc,argv)
+int argc;
+char *argv[ ];
+{
+if (argc==1)
+{
+printf(" You forgot to type your name \n");
+exit();
+}
+printf("Hello %s", argv[1]);
+}
+Output:    % Hello Message
+
+
+
+
+
+
+
+Definition: It is a parameter supplied
+to a program when the program is invoked.These are the
+arguments passed to the main at commandprompt.
+
+Explanation:
+
+main() function in 'c' takes two arguments called argc,argv.
+The information contained in the command arguments ,when main
+is called up by the stream.
+argc: The variable argc is an argument counter that
+coumts the number of arguments on the command line.
+
+argv:  The argv is an argument vector and represents
+an array of character pointers that point to the command 
+line arguments.The size of array will be equal to argc.
+
+   Ex: c:\> program x-file y-file
+
+      here argc=3.
+           argv[0]= program.
+           argv[1]=x-file.
+	   argv[2]=y-file.	
+i.e.., here argv[0] contains the base address of string
+"program"  argv[1]  contains the base address of string 
+"x-file"   argv[2]  contains the base address of string 
+"y-file"
+  Therefore arguments that we pass to main at command 
+prompt are command line arguments.
+
+Advantages of command line arguments:
+
+1.There is no need to recompile the program everytime we 
+want to use this utillity.It can be executed at command 
+prompt.
+
+2.Once executable file is created nobody with malicious 
+intention can tamper with your source code program.
+
+3.We can pass source file name and target file name to 
+main(), and utillise them in  main().
+
+
+    
