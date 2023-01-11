@@ -5,11 +5,11 @@ int thread_func(int y);
 
 int main()
 {
-int res1;
+int res;
 pthread_t t1;
 pthread_create(&t1,NULL,thread_func,10);
-pthread_join(t1,&res1);
-printf("%d\n",res1);
+pthread_join(t1,&res);
+printf("%d\n",res);
 }
 
 int thread_func(int y)
